@@ -23,15 +23,15 @@ def getImage(request):
         img_bytes = uploaded_img_qs.image.read()
         img = im.open(io.BytesIO(img_bytes))
 
-        path_hubconfig = "/home/jngmk/finalproject/web/yolov5_code"
+        path_hubconfig = "/Users/younwoo/Desktop/final_project/MultiFinalProject/finalproject/web/yolov5_code"
         path_weightfile = "yolov5_code/runs/train/yolov5s_results20/weights/best.pt"  
 
         model = torch.hub.load(path_hubconfig, 'custom', path=path_weightfile, source='local')
         results = model(img, size=224)
-        
+        print(results)
         result_confidence = results.pandas().xyxy[0]['confidence'].values[0]
         result_name = results.pandas().xyxy[0]['name'].values[0]
-        
+       
         print('--'*10)
         print('pred_name: ',result_name, '\nconfidence: ' , result_confidence)
         

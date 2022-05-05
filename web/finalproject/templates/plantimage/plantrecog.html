@@ -88,7 +88,8 @@
         <!-- <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )" style="font-family: 'Noto Sans KR', sans-serif;">나의 식물 가져오기</button> -->
         <br>
         
-        <form action="" enctype="multipart/form-data" method="POST"> {% csrf_token %}
+        <form action="" enctype="multipart/form-data" method="POST"> 
+            {% csrf_token %}
             <input type="file" name="plant_img" accept="image/*">
             <input type="submit" value="SUBMIT">
             <!-- <div class="file-upload-content">

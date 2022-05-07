@@ -23,7 +23,7 @@ func sleep(x int) {
 func scroll(s *webdriver.Session) {
 	lastPageHeight, err := s.ExecuteScript("return document.documentElement.scrollHeight", []interface{}{})
 	checkErr(err)
-	for i := 0; i < 10; i++ {
+	for {
 		_, err := s.ExecuteScript("window.scrollTo(0, document.documentElement.scrollHeight)", []interface{}{})
 		checkErr(err)
 		sleep(3)

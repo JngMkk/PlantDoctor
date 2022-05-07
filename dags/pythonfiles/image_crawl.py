@@ -6,13 +6,13 @@ from selenium import webdriver
 import time
 import os
 
-driver = webdriver.Firefox(executable_path="../../geckodriver")
+driver = webdriver.Firefox(executable_path="../geckodriver")
 
 def scroll() :
     last_page_height = driver.execute_script("return document.documentElement.scrollHeight")
-    for _ in range(20):
+    while True:
         driver.execute_script('window.scrollTo(0, document.documentElement.scrollHeight)')
-        time.sleep(5)
+        time.sleep(7)
         new_page_height = driver.execute_script("return document.documentElement.scrollHeight")
         if new_page_height == last_page_height:
             break
@@ -32,9 +32,9 @@ for x, y, z in zip(eng_name, quote_name, dir_name):
     # 구글 영어검색
     url = f"https://www.google.com/search?q={x}"
     driver.get(url)
-    time.sleep(5)
+    time.sleep(7)
     driver.find_element_by_css_selector("div.hdtb-mitem:nth-child(2) > a:nth-child(1)").click()
-    time.sleep(5)
+    time.sleep(7)
     while True:
         scroll()
         try:
@@ -56,9 +56,9 @@ for x, y, z in zip(eng_name, quote_name, dir_name):
     # 구글 한국어검색
     url = f"https://www.google.com/search?q={y}"
     driver.get(url)
-    time.sleep(5)
+    time.sleep(7)
     driver.find_element_by_css_selector("div.hdtb-mitem:nth-child(2) > a:nth-child(1)").click()
-    time.sleep(5)
+    time.sleep(7)
     while True:
         scroll()
         try:
@@ -87,7 +87,7 @@ for x, y, z in zip(eng_name, quote_name, dir_name):
     
     url = f"https://www.bing.com/images/search?q={x}"
     driver.get(url)
-    time.sleep(5)
+    time.sleep(7)
     while True:
         scroll()
         try:
@@ -100,7 +100,6 @@ for x, y, z in zip(eng_name, quote_name, dir_name):
     items = soup.select("div.img_cont.hoff")
     for item in items:
         src = item.select_one("img")["src"]
-        print(src)
         if src in srcs:
             continue
         else:
@@ -108,7 +107,7 @@ for x, y, z in zip(eng_name, quote_name, dir_name):
     
     url = f"https://www.bing.com/images/search?q={y}"
     driver.get(url)
-    time.sleep(5)
+    time.sleep(7)
     while True:
         scroll()
         try:
@@ -129,12 +128,12 @@ for x, y, z in zip(eng_name, quote_name, dir_name):
     # 네이버 한글 검색
     url = f"https://search.naver.com/search.naver?where=nexearch&ie=utf8&query={y}"
     driver.get(url)
-    time.sleep(5)
+    time.sleep(7)
     if driver.find_element_by_css_selector("ul.base > li:nth-child(2) > a").text == "이미지":
         driver.find_element_by_css_selector("ul.base > li:nth-child(2)").click()
     else:
         driver.find_element_by_css_selector("ul.base > li:nth-child(3)").click()
-    time.sleep(5)
+    time.sleep(7)
     scroll()
     html = driver.page_source
     soup = bs(html, "html.parser")

@@ -1,9 +1,14 @@
 # JngMkk
 from django.shortcuts import render, redirect
-from django.utils import timezone, dateformat
 from django.http import JsonResponse
 from finalproject.models import *
+from django.contrib import messages
 import datetime
+
+# swing2app 접근권한 설정
+from django.views.decorators.clickjacking import xframe_options_exempt
+
+@xframe_options_exempt
 
 def main(request):
     """ 메인 페이지 """
@@ -70,7 +75,11 @@ def plantmanage(request):
         meet_date = request.POST["plant_date"]
         water_date = request.POST["water_date"]
         water_date = datetime.datetime.strptime(water_date, "%Y-%m-%d").date()
-        plant_id = Plants.objects.get(name=plant_name)
+        try:
+            plant_id = Plants.objects.get(name=plant_name)
+        except:
+            messages.info(request, "아직 지원하지 않는 식물이에요 ㅠㅠ")
+            return redirect("/plantmanage")
         cycle = plant_id.watercycle
         if cycle == "주 1~2회":
             day=5

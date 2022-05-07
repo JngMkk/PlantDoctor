@@ -27,7 +27,19 @@ SECRET_KEY = 'django-insecure-7+_3gwb@iz3vktv18i79(zfsu+5j1jk6tr!mam)$s7(2=%ha)g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # aws 링크
+    '13.115.204.241',
+    
+    # 스윙2앱
+    'http://www.swing2app.co.kr/', 
+
+    # 장고 링크
+    '127.0.0.1',
+    '127.0.0.1:8000/plantrecog/',
+    'http://127.0.0.1:8000/plantinfo/'
+    '127.0.0.1/plantrecog'
+    ]
 
 
 # Application definition

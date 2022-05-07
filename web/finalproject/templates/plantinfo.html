@@ -44,50 +44,23 @@
     </style>
 </head>
 <body>
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('.image-upload-wrap').hide();
-                    $('.file-upload-image').attr('src', e.target.result);
-                    $('.file-upload-content').show();
-                    $('.image-title').html(input.files[0].name);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }else {
-                removeUpload();
-            }
-        }
-        function removeUpload() {
-            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-            $('.file-upload-content').hide();
-            $('.image-upload-wrap').show();
-        }
-        $('.image-upload-wrap').bind('dragover', function() {
-            $('.image-upload-wrap').addClass('image-dropping');
-        });
-        $('.image-upload-wrap').bind('dragleave', function() {
-            $('.image-upload-wrap').removeClass('image-dropping');
-        });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
-    <div class="file-upload" style="max-width: 100%; ">
-        <div onclick="location.href='{% url 'main' %}'" style="width: 15%; float: left;">
+    <div class="file-upload" style="max-width: 100%;">
+        <!-- <div onclick="location.href='{% url 'main' %}'" style="width: 15%; float: left;">
             <img src="{% static 'img/go-back-left-arrow.png' %}" style="width: 50%;">
-        </div>
+        </div> -->
         
-        <div style="float: left; text-align: center; width: 70%;">
+        <div style="width: 70%; float: left;">
             <div style="font-family: 'Noto Sans KR', sans-serif; font-size: 20pt;">나의 식물</div>
         </div>
-        
-        <div onclick="location.href='{% url 'plantmanage' %}'" style="margin-left: 0%; float: left;  width: 15%;" >
-            <img src="{% static 'img/plus.jpeg' %}" style="width: 86%;">
+
+        <div class="file-upload-btn"
+        onclick="location.href='{% url 'plantmanage' %}'" 
+        style="width: 28%; font-size: 10pt; text-align: center; float: left;" >
+        식물 추가
         </div>
-        
-        <div style="text-align: center; background-color: antiquewhite;"></div>
         
         <br><br>
         {% for o in obj %}
@@ -105,7 +78,7 @@
                 <input type="hidden" value="{{o.id}}" name="waterplant">
                 <button type="submit" class="file-upload-btn" style="height: 2.5em; font-size: 16pt; margin-bottom: 8%">물주기</button>
             </form>
-            <button class="file-upload-btn" onclick="location.href='/search/info/?id={{o.plant.plantid}}'" style="height: 2.5em; font-size: 16pt; margin-bottom: 8%">더보기</button>
+            <button class="file-upload-btn" onclick="location.href='/search/info/?id={{o.plant.plantid}}'" style="height: 2.5em; font-size: 16pt; margin-bottom: 8%">식물 정보</button>
             <form action="/plantdelete/" method="post">{% csrf_token %}
                 <input type="hidden" value="{{o.id}}" name="deleteplant">
                 <button type="submit" class="file-upload-btn" style="height: 2.5em; font-size: 16pt; margin-bottom: 8%">삭제</button>

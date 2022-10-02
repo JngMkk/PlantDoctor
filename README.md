@@ -77,25 +77,25 @@
 
 
 
-![image-20221003035451748](/home/jngmk/.config/Typora/typora-user-images/image-20221003035451748.png)
+![image](https://user-images.githubusercontent.com/87686562/193471626-2138bb20-97e4-4b1d-991b-e63bfef0a395.png)
 
 ---
 
 
 
-![image-20221003035515630](/home/jngmk/.config/Typora/typora-user-images/image-20221003035515630.png)
+![image](https://user-images.githubusercontent.com/87686562/193471614-a672127e-5b6e-428f-be4f-50fb0611c629.png)
 
 ---
 
 
 
-![image-20221003035610389](/home/jngmk/.config/Typora/typora-user-images/image-20221003035610389.png)
+![image](https://user-images.githubusercontent.com/87686562/193471594-39ce4eb7-3bd2-4db4-bd20-1379c62bf33f.png)
 
 ---
 
 
 
-![image-20221003035649417](/home/jngmk/.config/Typora/typora-user-images/image-20221003035649417.png)
+![image](https://user-images.githubusercontent.com/87686562/193471570-6f610d32-3077-435f-8466-0a457f6d7345.png)
 
 
 
@@ -103,5 +103,5 @@
 
 
 
-![image-20221003035729515](/home/jngmk/.config/Typora/typora-user-images/image-20221003035729515.png)
+![image](https://user-images.githubusercontent.com/87686562/193471558-6c97a364-b4b4-407b-9d83-144405fbdd14.png)
 

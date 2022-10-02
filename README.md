@@ -54,9 +54,6 @@
 
 ![image](https://user-images.githubusercontent.com/87686562/193470864-6dc5fffa-0549-4e5f-aa19-44f6b5d0c8fd.png)
 
-![image-20221003034813467](/home/jngmk/.config/Typora/typora-user-images/image-20221003034813467.png)
-
-
 
 ## 딥러닝 개발 과정
 

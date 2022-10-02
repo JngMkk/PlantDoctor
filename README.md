@@ -18,9 +18,9 @@
 
 ![image](https://user-images.githubusercontent.com/87686562/193470528-621fde5f-a529-4cd2-a686-e5727ffc8c06.png)
 
----
 
-![image-20221003034123415](/home/jngmk/.config/Typora/typora-user-images/image-20221003034123415.png)
+
+![image](https://user-images.githubusercontent.com/87686562/193471432-291de06d-91d1-4926-af2a-d262122eb6b2.png)
 
 ---
 

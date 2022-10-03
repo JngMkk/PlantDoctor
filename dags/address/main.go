@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+// Kakao map api response struct
 type region struct {
 	Meta struct {
 		TotalCount int `json:"total_count"`
@@ -28,6 +29,7 @@ type region struct {
 	} `json:"documents"`
 }
 
+// latitude & longitude to address
 func coordToAddr(lng, lat string) []string {
 	url := fmt.Sprintf("https://dapi.kakao.com/v2/local/geo/coord2address.json?x=%s&y=%s", lng, lat)
 	res, err := http.NewRequest("GET", url, nil)

@@ -1,0 +1,31 @@
+[tool.black]
+target-version = ['py311']
+line-length=110
+
+[tool.isort]
+profile="black"
+line_length=110
+
+[tool.poetry]
+name = "plantdoctor"
+version = "2.0"
+description = ""
+authors = ["PlantDoctorTeam"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.98.0"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+pydantic = "^1.10.9"
+sqlmodel = "^0.0.8"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.4.0"
+black = "^23.3.0"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

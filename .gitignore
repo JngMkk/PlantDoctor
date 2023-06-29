@@ -1,11 +1,19 @@
-/image
+# * Python
+.python-version
+__pycache__/
+
+# * Mypy
+.mypy_cache/
+
+# * Database
+migrations/
+
+# * LOG
 *.log
 *.out
-test.ipynb
+
+# * ETC
+/media/
+/image/
 .DS_Store
-__pycache__/
-node_modules
-media/
-migrations/
-yolo*/
-settings.py
+

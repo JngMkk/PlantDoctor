@@ -12,8 +12,10 @@ migrations/
 *.log
 *.out
 
+# * LOCAL CONFIG
+config.json
+
 # * ETC
 /media/
 /image/
 .DS_Store
-

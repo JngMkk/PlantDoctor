@@ -1,9 +1,13 @@
+from datetime import date
+
 from sqlalchemy import Column
 from sqlalchemy.dialects.mysql import SMALLINT, TEXT, TINYINT
 from sqlmodel import Field, SQLModel
 
+from .base import BaseModel
 
-class WaterCycle(SQLModel):
+
+class WaterCycle(SQLModel, table=True):
     __tablename__ = "waterCycle"
 
     id: int | None = Field(
@@ -12,7 +16,7 @@ class WaterCycle(SQLModel):
     description: str = Field(max_length=8, description="cycle info")
 
 
-class WaterMethod(SQLModel):
+class WaterMethod(SQLModel, table=True):
     __tablename__ = "waterMethod"
 
     id: int | None = Field(
@@ -21,7 +25,7 @@ class WaterMethod(SQLModel):
     description: str = Field(max_length=40, description="how to water info")
 
 
-class WaterMethodDetail(SQLModel):
+class WaterMethodDetail(SQLModel, table=True):
     __tablename__ = "waterMethodDetail"
 
     id: int | None = Field(
@@ -30,7 +34,7 @@ class WaterMethodDetail(SQLModel):
     description: str = Field(max_length=20, description="how to water detail info")
 
 
-class LightLocation(SQLModel):
+class LightLocation(SQLModel, table=True):
     __tablename__ = "lightLocation"
 
     id: int | None = Field(
@@ -39,7 +43,7 @@ class LightLocation(SQLModel):
     description: str = Field(max_length=10, description="light location info")
 
 
-class LightSumm(SQLModel):
+class LightSumm(SQLModel, table=True):
     __tablename__ = "lightSumm"
 
     id: int | None = Field(
@@ -48,7 +52,7 @@ class LightSumm(SQLModel):
     description: str = Field(max_length=30, description="light summ info")
 
 
-class HumidEnv(SQLModel):
+class HumidEnv(SQLModel, table=True):
     __tablename__ = "humidEnv"
 
     id: int | None = Field(
@@ -57,7 +61,7 @@ class HumidEnv(SQLModel):
     description: str = Field(max_length=20, description="humid env info")
 
 
-class HumidSumm(SQLModel):
+class HumidSumm(SQLModel, table=True):
     __tablename__ = "humidSumm"
 
     id: int | None = Field(
@@ -66,7 +70,7 @@ class HumidSumm(SQLModel):
     description: str = Field(max_length=30, description="humid summ info")
 
 
-class tempEnv(SQLModel):
+class tempEnv(SQLModel, table=True):
     __tablename__ = "tempEnv"
 
     id: int | None = Field(
@@ -75,7 +79,7 @@ class tempEnv(SQLModel):
     description: str = Field(max_length=20, description="temp env info")
 
 
-class Plant(SQLModel):
+class Plant(SQLModel, table=True):
     __tablename__ = "plants"
 
     id: int | None = Field(default=None, sa_column=Column(SMALLINT), primary_key=True, description="식물 ID")
@@ -97,7 +101,7 @@ class Plant(SQLModel):
     tempDetail: str = Field(sa_column=Column(TEXT), description="온도 상세 정보")
 
 
-class PlantDisease(SQLModel):
+class PlantDisease(SQLModel, table=True):
     __tablename__ = "plantDiseases"
 
     id: int | None = Field(default=None, sa_column=Column(TINYINT), primary_key=True, description="식물 질병 ID")
@@ -106,3 +110,22 @@ class PlantDisease(SQLModel):
     symptom: str = Field(sa_column=Column(TEXT), description="증상")
     env: str = Field(sa_column=Column(TEXT), description="환경")
     precaution: str = Field(sa_column=Column(TEXT), description="예방법")
+
+
+class PlantManagement(BaseModel, table=True):
+    __tablename__ = "plantManagement"
+
+    id: int | None = Field(default=None, primary_key=True, description="식물 관리 ID")
+    userId: int = Field(index=True, description="회원 ID")
+    plantId: int = Field(index=True, description="식물 ID")
+    nickName: str = Field(max_length=20, description="식물 별칭")
+    meetDate: date = Field(description="식물 만난 날")
+
+
+class PlantRequest(BaseModel, table=True):
+    __tablename__ = "plantRequest"
+
+    id: int | None = Field(default=None, primary_key=True, description="식물 요청 ID")
+    userId: int = Field(description="회원 ID")
+    plantName: str = Field(max_length=64, description="요청 식물 이름")
+    isChecked: bool | None = Field(default=False, description="처리 여부")

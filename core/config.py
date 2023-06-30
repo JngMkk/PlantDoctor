@@ -1,9 +1,25 @@
+import json
 import os
 from functools import lru_cache
-from typing import Any
+from typing import Any, Final
 
 from pydantic import AnyUrl, BaseSettings
 from sqlmodel.ext.asyncio.session import AsyncSession
+
+
+def get_config() -> dict[str, Any]:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    config_file = os.path.join(base_dir, "config.json")
+
+    try:
+        file = open(config_file, "r")
+        data = file.read()
+        config = json.loads(data)
+        file.close()
+    except FileNotFoundError:
+        raise FileNotFoundError("There is no config file.")
+
+    return config
 
 
 def get_db_uri() -> Any:
@@ -22,8 +38,11 @@ def get_db_uri() -> Any:
     return AnyUrl.build(scheme=scheme, user=user, password=pw, host=host, port=port, path=path, query=query)
 
 
+# ===========================================================================================================
+CONFIG: Final[dict[str, Any]] = get_config()
+
+
 class Settings(BaseSettings):
-    # * DB Connection
     DB_URI: str = get_db_uri()
     ENGINE_CONFIG: dict[str, Any] = {
         "future": True,
@@ -37,6 +56,12 @@ class Settings(BaseSettings):
         "autocommit": False,
         "expire_on_commit": False,
     }
+
+    SIGNIN_API_URI: str = "/users/signin"
+    JWT_CONFIG: dict[str, Any] = CONFIG["JWT"]
+    USER_ID_FIELD: str = "id"
+    USER_EMAIL_FIELD: str = "email"
+    PW_CONFIG: dict[str, Any] = CONFIG["PW"]
 
 
 @lru_cache()

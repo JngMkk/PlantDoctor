@@ -19,12 +19,16 @@ fastapi = "^0.98.0"
 uvicorn = {extras = ["standard"], version = "^0.22.0"}
 pydantic = "^1.10.9"
 sqlmodel = "^0.0.8"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.0"
 black = "^23.3.0"
 flake8 = "^6.0.0"
+types-python-jose = "^3.3.4.7"
+types-passlib = "^1.7.7.12"
 
 [build-system]
 requires = ["poetry-core"]

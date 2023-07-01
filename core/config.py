@@ -59,8 +59,6 @@ class Settings(BaseSettings):
 
     SIGNIN_API_URI: str = "/users/signin"
     JWT_CONFIG: dict[str, Any] = CONFIG["JWT"]
-    USER_ID_FIELD: str = "id"
-    USER_EMAIL_FIELD: str = "email"
     PW_CONFIG: dict[str, Any] = CONFIG["PW"]
 
 

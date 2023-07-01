@@ -13,21 +13,21 @@ def init_schema_extra(cls: type[PlantDoctorException]) -> dict[str, dict[str, An
 
 class ExceptionRespBase(BaseModel):
     status_code: int
-    error_code: int
+    error_code: str
     error_msg: str
     error_data: Any | None
 
 
-class NotAuthenticatedRespSchema(ExceptionRespBase):
+class NotAuthenticatedResp(ExceptionRespBase):
     class Config:
         schema_extra = init_schema_extra(NotAuthenticated)
 
 
-class ForbiddenRespSchema(ExceptionRespBase):
+class ForbiddenResp(ExceptionRespBase):
     class Config:
         schema_extra = init_schema_extra(Forbidden)
 
 
-class InternalServerValidationExceptionRespSchema(ExceptionRespBase):
+class InternalServerValidationExceptionResp(ExceptionRespBase):
     class Config:
         schema_extra = init_schema_extra(InternalServerValidationException)

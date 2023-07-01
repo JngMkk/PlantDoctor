@@ -13,7 +13,8 @@ from common.exceptions import InternalServerValidationException, PlantDoctorExce
 def init_error(exc: PlantDoctorException | HTTPException) -> dict[str, Any]:
     error_resp = {
         "error": {
-            "error_code": getattr(exc, "error_code", -9999),
+            "status_code": getattr(exc, "status_code"),
+            "error_code": getattr(exc, "error_code"),
             "error_msg": getattr(exc, "error_msg", "알 수 없는 오류가 발생했습니다."),
             "error_data": getattr(exc, "error_data", None),
         },

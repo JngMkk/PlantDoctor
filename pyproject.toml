@@ -17,10 +17,14 @@ readme = "README.md"
 python = "^3.11"
 fastapi = "^0.98.0"
 uvicorn = {extras = ["standard"], version = "^0.22.0"}
-pydantic = "^1.10.9"
+pydantic = {version = "1.10.10", extras = ["email"]}
 sqlmodel = "^0.0.8"
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+aiomysql = "^0.2.0"
+greenlet = "^2.0.2"
+pytz = "^2023.3"
+alembic = "^1.11.1"
 
 
 [tool.poetry.group.dev.dependencies]
